@@ -13,7 +13,9 @@
   (bb/clean opts))
 
 (defn uber "Run uberjar" [opts]
-  (bb/uber opts))
+  (-> opts
+      (assoc :lib lib :version version :main main)
+      (bb/uber)))
 
 (defn release "Run full release with tests" [opts]
   (-> opts
