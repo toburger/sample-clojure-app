@@ -1,6 +1,6 @@
 # Clojure HTTP Server on `Piku`
 
-Illustrates how to create an uberjar for clojure projects using `clojure cli` and `seancorfield/build-clj`
+Illustrates how to create an uberjar for clojure projects using [`Clojure CLI`](https://clojure.org/guides/install_clojure) and [`tools.build`](https://clojure.org/guides/tools_build)
 
 ## Installation
 
