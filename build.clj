@@ -12,7 +12,7 @@
 (defn clean "Run clean" [_]
   (b/delete {:path "target"}))
 
-(defn uber [_]
+(defn release [_]
   (clean nil)
   (b/copy-dir {:src-dirs ["src" "resources"]
                :target-dir class-dir})
