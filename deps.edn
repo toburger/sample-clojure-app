@@ -1,0 +1,5 @@
+{:deps {org.clojure/clojure {:mvn/version "1.10.0"}
+        clj-time/clj-time {:mvn/version "0.15.2"}
+        aleph/aleph {:mvn/version "0.4.6"}}
+ :aliases
+ {:main {:main-opts ["-m" "sample-clojure-app.core"]}}}
