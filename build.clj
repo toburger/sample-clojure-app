@@ -5,6 +5,7 @@
 (def lib 'piku/sample-clojure-app)
 (def version "0.1.0-SNAPSHOT")
 (def main 'sample-clojure-app.core)
+(def worker 'sample-clojure-app.worker)
 
 (defn test "Run tests" [opts]
   (bb/run-tests opts))
@@ -14,12 +15,11 @@
 
 (defn uber "Run uberjar" [opts]
   (-> opts
-      (assoc :lib lib :version version :main main)
+      (assoc :lib lib
+             :version version
+             :main main
+             :ns-compile [main worker])
       (bb/uber)))
 
 (defn release "Run full release with tests" [opts]
-  (-> opts
-      (assoc :lib lib :version version :main main)
-      (bb/run-tests)
-      (bb/clean)
-      (bb/uber)))
+  (-> opts test clean uber))
