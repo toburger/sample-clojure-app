@@ -1,6 +1,6 @@
-{:deps {org.clojure/clojure {:mvn/version "1.10.0"}
+{:deps {org.clojure/clojure {:mvn/version "1.11.1"}
         clj-time/clj-time {:mvn/version "0.15.2"}
-        aleph/aleph {:mvn/version "0.4.6"}}
+        aleph/aleph {:mvn/version "0.6.3"}}
  :aliases
  {:main {:main-opts ["-m" "sample-clojure-app.core"]}
   :build {:deps {io.github.seancorfield/build-clj
