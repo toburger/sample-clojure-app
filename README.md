@@ -1,12 +1,12 @@
 # Clojure HTTP Server on `Piku`
 
-Illustrates how to create an uberjar for clojure projects using `lein`
+Illustrates how to create an uberjar for clojure projects using `clojure cli` and `seancorfield/build-clj`
 
 ## Installation
 
 Clone with;
 ```bash
-	git clone git@github:matrixjnr/sample-clojure-app.git
+	git clone git@github:toburger/sample-clojure-app.git
 	git //change upstream url
 	git remote add piku piku@your-server:sample-clojure-app
 	git add .
@@ -16,9 +16,13 @@ Clone with;
 
 ## Usage
 
+Build the uberjar:
+
+    $ clojure -T:build release
+
 To run the uberjar:
 
-    $ java -jar sample-clojure-app-0.1.0-standalone.jar
+    $ java -jar target/sample-clojure-app-0.1.0.jar
 
 ## Workers
 
