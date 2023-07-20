@@ -6,6 +6,7 @@
 (def version "0.1.0-SNAPSHOT")
 (def main 'sample-clojure-app.core)
 (def worker 'sample-clojure-app.worker)
+(def cronjob 'sample-clojure-app.cronjob)
 
 (defn test "Run tests" [opts]
   (bb/run-tests opts))
@@ -18,7 +19,9 @@
       (assoc :lib lib
              :version version
              :main main
-             :ns-compile [main worker])
+             :ns-compile [main
+                          worker
+                          cronjob])
       (bb/uber)))
 
 (defn release "Run full release with tests" [opts]
