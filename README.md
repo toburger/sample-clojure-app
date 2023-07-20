@@ -22,7 +22,7 @@ Build the uberjar:
 
 To run the uberjar:
 
-    $ java -jar target/sample-clojure-app-0.1.0-SNAPSHOT.jar
+    $ java -jar target/sample-clojure-app-0.1.0-SNAPSHOT-standalone.jar
 
 ## Workers
 
