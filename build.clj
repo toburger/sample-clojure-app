@@ -1,28 +1,25 @@
 (ns build
   (:refer-clojure :exclude [test])
-  (:require [org.corfield.build :as bb]))
+  (:require [clojure.tools.build.api :as b]))
 
 (def lib 'piku/sample-clojure-app)
 (def version "0.1.0-SNAPSHOT")
+(def class-dir "target/classes")
 (def main 'sample-clojure-app.core)
-(def worker 'sample-clojure-app.worker)
-(def cronjob 'sample-clojure-app.cronjob)
+(def basis (b/create-basis {:project "deps.edn"}))
+(def uber-file (format "target/%s-%s-standalone.jar" (name lib) version))
 
-(defn test "Run tests" [opts]
-  (bb/run-tests opts))
+(defn clean "Run clean" [_]
+  (b/delete {:path "target"}))
 
-(defn clean "Run clean" [opts]
-  (bb/clean opts))
-
-(defn uber "Run uberjar" [opts]
-  (-> opts
-      (assoc :lib lib
-             :version version
-             :main main
-             :ns-compile [main
-                          worker
-                          cronjob])
-      (bb/uber)))
-
-(defn release "Run full release with tests" [opts]
-  (-> opts test clean uber))
+(defn uber [_]
+  (clean nil)
+  (b/copy-dir {:src-dirs ["src" "resources"]
+               :target-dir class-dir})
+  (b/compile-clj {:basis basis
+                  :src-dirs ["src"]
+                  :class-dir class-dir})
+  (b/uber {:class-dir class-dir
+           :uber-file uber-file
+           :basis basis
+           :main main}))
